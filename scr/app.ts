@@ -1,6 +1,6 @@
 import express, { Router } from "express";
-import pool from "./database/db_connect"
-import { getCategories } from "./controllers/categories_controller";
+import { getCategories, getCategoriesById, createCategories, deleteCategories, updateCategory } from "./controllers/categories_controller";
+
 require ('dotenv').config();
 
 const app = express();
@@ -8,17 +8,18 @@ const port = process.env.PORT
 
 
 const categoriesRoutes = Router();
+app.use(express.json());
 
 categoriesRoutes.get('/categories', getCategories);
+categoriesRoutes.get('/getCategoriesById/:id', getCategoriesById);
+categoriesRoutes.post('/createCategories', createCategories);
+categoriesRoutes.delete('/deleteCategories/:id', deleteCategories)
+categoriesRoutes.put('/updateCategories/:id', updateCategory)
 
-// app.get('/', async (req,res) => {
-//     const query = 'select * from employees';
-//     const response = await pool.query(query);
-//     console.log(response);
-//     res.send('hola Mundo El Servidor Esta Escuchando en el Puerto 3000')
-// });
+
 
 app.use(categoriesRoutes);
+
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
