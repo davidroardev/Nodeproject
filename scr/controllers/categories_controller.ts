@@ -1,6 +1,5 @@
 import pool from "../database/db_connect";
-import { request, Response } from "express";
-import { Request } from "express";
+import { Request, Response } from "express";
 import { QueryResult } from "pg";
 
 /**

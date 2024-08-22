@@ -27,8 +27,10 @@
   },
   "homepage": "https://github.com/davidroardev/Nodeproject#readme",
   "dependencies": {
+    "@types/jsonwebtoken": "^9.0.6",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
     "pg": "^8.12.0"
   },
   "devDependencies": {
