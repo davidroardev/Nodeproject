@@ -19,10 +19,10 @@ export const getAllCustomers = async (req: Request , res: Response): Promise<Res
     }
 };
 
-export const getcustomerById =async (req: Request, res: Response): Promise <Response> =>{
-    const id = req.params.body;
+export const getCustomersById = async (req: Request, res: Response): Promise<Response> => {
+    const id = req.params.id;
     try {
-        const response: QueryResult = await pool.query('SELECT * FROM customers WHERE customer_id = $1', [id]);
+        const response: QueryResult = await pool.query('SELECT * FROM customers WHERE customer_id = $1;', [id]);
         return res.status(200).json(response.rows);
     } catch (error) {
         console.error(error);
@@ -67,7 +67,7 @@ export const createCustomer = async (req: Request, res: Response): Promise <Resp
 };
 
 export const deleteCustomer = async (req: Request, res: Response): Promise<Response> => {
-    const id = req.params.body
+    const id = req.params.id
     if(id !== null){
 
         try {

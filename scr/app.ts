@@ -3,7 +3,7 @@ import { getCategories, getCategoriesById, createCategories, deleteCategories, u
 import {generateToken} from "./controllers/user_controllers";
 import {authenticateToken} from "./middleware/authorization";
 import { errorHandler } from "./middleware/error";
-import { createCustomer, deleteCustomer, getAllCustomers, getcustomerById, updateCustomers } from "./controllers/customers_controller";
+import { createCustomer, deleteCustomer, getAllCustomers, getCustomersById, updateCustomers } from "./controllers/customers_controller";
 require ('dotenv').config();
 
 const app = express();
@@ -23,10 +23,10 @@ userRoutes.post('/api/login', generateToken);
 
 //customers endpoints
 customersRoutes.get('/getCustomers', getAllCustomers);
-customersRoutes.get('/getCustomerbyid', getcustomerById);
-customersRoutes.post('createCustomer', createCustomer);
-customersRoutes.delete('/deleteCustomer', deleteCustomer);
-customersRoutes.put('/updateCustomer', updateCustomers)
+customersRoutes.get('/getCustomerbyid/:id', getCustomersById);
+customersRoutes.post('/createCustomer', createCustomer);
+customersRoutes.delete('/deleteCustomer/:id', deleteCustomer);
+customersRoutes.put('/updateCustomer/:id', updateCustomers)
 
 
 app.use(express.json());
